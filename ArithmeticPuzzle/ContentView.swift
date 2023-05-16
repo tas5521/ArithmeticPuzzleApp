@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     // 問題数の変数
     @State var numberOfQuestion: Int = 10
+    // QuestionMakerのインスタンスを生成
+    let questionMaker = QuestionMaker()
+    // 問題集
+    @State var questions: [Question] = QuestionMaker().makeQuestions(10)
 
     var body: some View {
         NavigationStack {
@@ -39,7 +43,7 @@ struct ContentView: View {
                 // 「ゲームスタート」ボタンを配置
                 NavigationLink {
                     // ゲーム画面に遷移
-                    GameView(numberOfQuestion: $numberOfQuestion)
+                    GameView(questions: $questions)
                 } label: {
                     Text("ゲームスタート")
                         .font(.title2)
@@ -52,6 +56,10 @@ struct ContentView: View {
                 Spacer()
             } // VStackここまで
         } // NavigationStackここまで
+        .onChange(of: numberOfQuestion) { newValue in
+            questions = questionMaker.makeQuestions(numberOfQuestion)
+            print(questions)
+        }
     } // bodyここまで
 } // ContnetViewここまで
 

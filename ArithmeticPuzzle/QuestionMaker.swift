@@ -15,8 +15,6 @@ struct Question {
 } // Questionここまで
 
 struct QuestionMaker {
-    let numberOfQuestion: Int
-
     // 問題を作るメソッド
     private func makeQuestion() -> Question? {
         let symbol: ArithmeticSymbols = ArithmeticSymbols.allCases.randomElement()!
@@ -51,13 +49,12 @@ struct QuestionMaker {
     } // makeQuestionここまで
 
     // 問題集を作るメソッド
-    func makeQuestions() -> [Question] {
+    func makeQuestions(_ numberOfQuestion: Int) -> [Question] {
         var questions: [Question] = []
         repeat {
             if let question = makeQuestion() {
                 questions.append(question)
             }
-            print(questions.count)
         } while questions.count != numberOfQuestion
         return questions
     }
