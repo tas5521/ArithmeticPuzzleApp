@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    // 問題数の変数
+    @State var numberOfQuestion: Int = 10
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,10 +23,23 @@ struct ContentView: View {
                 // +-×÷のイメージを配置
                 Image(systemName: "photo")
                 Spacer()
+                // 問題数を指定
+                Text("問題数を選択してください")
+                Picker(selection: $numberOfQuestion, label: Text("問題数を選択")) {
+                    Text("1")
+                        .tag(1)
+                    Text("5")
+                        .tag(5)
+                    Text("10")
+                        .tag(10)
+                    Text("20")
+                        .tag(20)
+                }
+                .pickerStyle(.inline)
                 // 「ゲームスタート」ボタンを配置
                 NavigationLink {
                     // ゲーム画面に遷移
-                    GameView()
+                    GameView(numberOfQuestion: $numberOfQuestion)
                 } label: {
                     Text("ゲームスタート")
                         .font(.title2)

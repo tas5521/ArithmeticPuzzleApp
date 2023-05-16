@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ArithmeticSymbols: String {
+enum ArithmeticSymbols: String, CaseIterable {
     case plus = "plus"
     case minus = "minus"
     case multiply = "multiply"
