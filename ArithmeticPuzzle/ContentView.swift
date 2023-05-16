@@ -12,11 +12,13 @@ struct ContentView: View {
     @State var numberOfQuestion: Int = 10
     // QuestionMakerのインスタンスを生成
     let questionMaker = QuestionMaker()
-    // 問題集
+    // 問題集を作成
     @State var questions: [Question] = QuestionMaker().makeQuestions(10)
 
     var body: some View {
+        // ナビゲーションスタックを配置
         NavigationStack {
+            // 縦方向にレイアウト
             VStack {
                 Spacer()
                 // タイトルを表示
@@ -25,10 +27,26 @@ struct ContentView: View {
                     .bold()
                 Spacer()
                 // +-×÷のイメージを配置
-                Image(systemName: "photo")
+                VStack(spacing: 10) {
+                    HStack {
+                        Image(systemName: "plus")
+                            .foregroundColor(Color.red)
+                        Image(systemName: "minus")
+                            .foregroundColor(Color.blue)
+                    }
+                    HStack {
+                        Image(systemName: "multiply")
+                            .foregroundColor(Color.green)
+                        Image(systemName: "divide")
+                            .foregroundColor(Color.purple)
+                    }
+                }
+                .scaleEffect(3)
                 Spacer()
                 // 問題数を指定
                 Text("問題数を選択してください")
+                    .font(.title2)
+                // 問題数を選択するPicker
                 Picker(selection: $numberOfQuestion, label: Text("問題数を選択")) {
                     Text("1")
                         .tag(1)
@@ -38,7 +56,7 @@ struct ContentView: View {
                         .tag(10)
                     Text("20")
                         .tag(20)
-                }
+                } // Pickerここまで
                 .pickerStyle(.inline)
                 // 「ゲームスタート」ボタンを配置
                 NavigationLink {
@@ -57,8 +75,8 @@ struct ContentView: View {
             } // VStackここまで
         } // NavigationStackここまで
         .onChange(of: numberOfQuestion) { newValue in
-            questions = questionMaker.makeQuestions(numberOfQuestion)
-            print(questions)
+            // 問題集を更新
+            questions = questionMaker.makeQuestions(newValue)
         }
     } // bodyここまで
 } // ContnetViewここまで

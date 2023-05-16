@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ArithmeticSymbolSelectButtons: View {
+    // 選択されている記号を保持する変数
     @Binding var selectedArithmeticSymbol: ArithmeticSymbols?
     @State var plusButtonColor: Bool = false
     @State var minusButtonColor: Bool = false
