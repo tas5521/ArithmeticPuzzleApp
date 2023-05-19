@@ -24,24 +24,42 @@ struct QuestionMaker {
         switch symbol {
         case .plus:
             let answer: Int = number1 + number2
-            let answerSymbolCheckResult: [ArithmeticSymbols] = otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
-            question = Question(leftNumber: number1, rightNumber: number2, answer: answer, answerSymbol: answerSymbolCheckResult)
+            let answerSymbolCheckResult: [ArithmeticSymbols] =
+                otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
+            question = Question(leftNumber: number1,
+                                rightNumber: number2,
+                                answer: answer,
+                                answerSymbol: answerSymbolCheckResult)
         case .minus:
             let answer: Int = number1 - number2
             if answer >= 0 {
-                let answerSymbolCheckResult: [ArithmeticSymbols] = otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
-                question = Question(leftNumber: number1, rightNumber: number2, answer: answer, answerSymbol: answerSymbolCheckResult)
+                let answerSymbolCheckResult: [ArithmeticSymbols] =
+                    otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
+                question = Question(leftNumber: number1, rightNumber: number2,
+                                    answer: answer, answerSymbol: answerSymbolCheckResult)
+            } else {
+                let answerSymbolCheckResult: [ArithmeticSymbols] =
+                    otherAnswerSymbolCheck(number1: number2, number2: number1, answer: -answer)
+                question = Question(leftNumber: number2, rightNumber: number1,
+                                    answer: -answer, answerSymbol: answerSymbolCheckResult)
             }
         case .multiply:
             let answer: Int = number1 * number2
-            let answerSymbolCheckResult: [ArithmeticSymbols] = otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
-            question = Question(leftNumber: number1, rightNumber: number2, answer: answer, answerSymbol: answerSymbolCheckResult)
+            let answerSymbolCheckResult: [ArithmeticSymbols] =
+                otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
+            question =
+                Question(leftNumber: number1,
+                         rightNumber: number2,
+                         answer: answer,
+                         answerSymbol: answerSymbolCheckResult)
         case .divide:
             if number2 != 0 {
                 if (Double(number1) / Double(number2)).truncatingRemainder(dividingBy: 1) == 0 {
                     let answer: Int = Int(Double(number1) / Double(number2))
-                    let answerSymbolCheckResult: [ArithmeticSymbols] = otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
-                    question = Question(leftNumber: number1, rightNumber: number2, answer: answer, answerSymbol: answerSymbolCheckResult)
+                    let answerSymbolCheckResult: [ArithmeticSymbols] =
+                        otherAnswerSymbolCheck(number1: number1, number2: number2, answer: answer)
+                    question = Question(leftNumber: number1, rightNumber: number2,
+                                        answer: answer, answerSymbol: answerSymbolCheckResult)
                 } // 小数点以下チェックここまで
             } // ゼロ除算チェックここまで
         } // switchここまで

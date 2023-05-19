@@ -61,7 +61,7 @@ struct ContentView: View {
                 // 「ゲームスタート」ボタンを配置
                 NavigationLink {
                     // ゲーム画面に遷移
-                    GameView(questions: $questions)
+                    GameView(questions: $questions, numberOfQuestion: $numberOfQuestion)
                 } label: {
                     Text("ゲームスタート")
                         .font(.title2)

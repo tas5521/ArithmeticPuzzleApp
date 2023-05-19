@@ -15,15 +15,17 @@ struct GameView: View {
     // 問題集
     @Binding var questions: [Question]
     // 正誤を格納する変数
-    @State var correctOrWrong: Bool? = nil
-    //シート表示の有無
+    @State var correctOrWrong: Bool?
+    // シート表示の有無
     @State var isShowSheet: Bool = false
     // 入力された記号を保持する変数
-    @State var arithmeticSymbol: ArithmeticSymbols? = nil
+    @State var arithmeticSymbol: ArithmeticSymbols?
+    // 問題数の変数
+    @Binding var numberOfQuestion: Int
 
     // 「back」ボタンを「戻る」に変更するために使用する環境変数
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         // 縦方向にレイアウト
         VStack {
@@ -50,7 +52,12 @@ struct GameView: View {
             HStack(spacing: 25) {
                 // 数式を表示
                 Text("\(questions[questionNumber].leftNumber)")
-                ArithmeticButton(selectedArithmeticSymbol: $selectedArithmeticSymbol, arithmeticSymbol: $arithmeticSymbol, correctOrWrong: $correctOrWrong, questions: $questions, questionNumber: $questionNumber, isShowSheet: $isShowSheet)
+                ArithmeticButton(selectedArithmeticSymbol: $selectedArithmeticSymbol,
+                                 arithmeticSymbol: $arithmeticSymbol,
+                                 correctOrWrong: $correctOrWrong,
+                                 questions: $questions,
+                                 questionNumber: $questionNumber,
+                                 isShowSheet: $isShowSheet)
                 Text("\(questions[questionNumber].rightNumber)")
                 Text("=")
                 Text("\(questions[questionNumber].answer)")
@@ -80,9 +87,9 @@ struct GameView: View {
         } // .toolbarここまで
         .sheet(isPresented: $isShowSheet, onDismiss: {
             // 全てリセット
+            questions = QuestionMaker().makeQuestions(numberOfQuestion)
             questionNumber = 0
             arithmeticSymbol = nil
-            selectedArithmeticSymbol = nil
             correctOrWrong = nil
         }, content: {
             Text("終了")
@@ -92,6 +99,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(questions: Binding.constant(QuestionMaker().makeQuestions(10)))
+        GameView(questions: Binding.constant(QuestionMaker().makeQuestions(10)), numberOfQuestion: Binding.constant(10))
     }
 }

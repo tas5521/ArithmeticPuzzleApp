@@ -1,8 +1,8 @@
 enum ArithmeticSymbols: String, CaseIterable {
-    case plus = "plus"
-    case minus = "minus"
-    case multiply = "multiply"
-    case divide = "divide"
+    case plus
+    case minus
+    case multiply
+    case divide
 }
 
 // メモ
@@ -29,15 +29,3 @@ func otherAnswerSymbolCheck(number1: Int, number2: Int, answer: Int) -> [Arithme
     }
     return symbolsArray
 }
-
-// 例 2 + 2 = 4と、2 * 2 = 4 で　+と*を答えにする必要がある　チェック
-let a: Int = 2
-let b: Int = 2
-let c: Int = 4
-print(otherAnswerSymbolCheck(number1: a, number2: b, answer: c))
-
-// 例 4 - 2 = 2 と、　4 / 2 = 2で、/と-を答えにする　チェック
-let d: Int = 4
-let e: Int = 2
-let f: Int = 2
-print(otherAnswerSymbolCheck(number1: d, number2: e, answer: f))

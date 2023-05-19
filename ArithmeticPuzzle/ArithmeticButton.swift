@@ -18,9 +18,9 @@ struct ArithmeticButton: View {
     @Binding var questions: [Question]
     // 問題番号を保持する変数
     @Binding var questionNumber: Int
-    //シート表示の有無
+    // シート表示の有無
     @Binding var isShowSheet: Bool
-    
+
     var body: some View {
         Button {
             // 選択されている記号を保持する変数を入力された記号を保持する変数に渡す
@@ -62,16 +62,21 @@ struct ArithmeticButton: View {
                 .frame(width: 50, height: 50)
         } // Buttonここまで
     } // bodyここまで
-    
-    //正誤を判定するメソッド
+
+    // 正誤を判定するメソッド
     func checkCorrectOrWrong() -> Bool {
         questions[questionNumber].answerSymbol.contains(arithmeticSymbol!)
-    } //正誤を判定するメソッドここまで
-    
+    } // 正誤を判定するメソッドここまで
+
 } // ArithmeticButtonここまで
 
 struct ArithmeticButton_Previews: PreviewProvider {
     static var previews: some View {
-        ArithmeticButton(selectedArithmeticSymbol: Binding.constant(.minus), arithmeticSymbol: Binding.constant(.plus), correctOrWrong: Binding.constant(nil), questions: Binding.constant(QuestionMaker().makeQuestions(10)), questionNumber: Binding.constant(0), isShowSheet: Binding.constant(false))
+        ArithmeticButton(selectedArithmeticSymbol: Binding.constant(.minus),
+                         arithmeticSymbol: Binding.constant(.plus),
+                         correctOrWrong: Binding.constant(nil),
+                         questions: Binding.constant(QuestionMaker().makeQuestions(10)),
+                         questionNumber: Binding.constant(0),
+                         isShowSheet: Binding.constant(false))
     }
 }

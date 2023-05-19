@@ -8,8 +8,8 @@
 import Foundation
 
 enum ArithmeticSymbols: String, CaseIterable {
-    case plus = "plus"
-    case minus = "minus"
-    case multiply = "multiply"
-    case divide = "divide"
+    case plus
+    case minus
+    case multiply
+    case divide
 }
