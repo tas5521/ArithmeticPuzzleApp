@@ -16,6 +16,7 @@
 		4A55405F2A1272D600B79530 /* ArithmeticButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A55405E2A1272D600B79530 /* ArithmeticButton.swift */; };
 		4A5540612A127FA200B79530 /* ArithmeticSymbolSelectButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5540602A127FA200B79530 /* ArithmeticSymbolSelectButtons.swift */; };
 		4A5540642A1375C300B79530 /* QuestionMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5540632A1375C300B79530 /* QuestionMaker.swift */; };
+		4A6286FC2A17CD1100FA078C /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6286FB2A17CD1100FA078C /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4A55405E2A1272D600B79530 /* ArithmeticButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticButton.swift; sourceTree = "<group>"; };
 		4A5540602A127FA200B79530 /* ArithmeticSymbolSelectButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticSymbolSelectButtons.swift; sourceTree = "<group>"; };
 		4A5540632A1375C300B79530 /* QuestionMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMaker.swift; sourceTree = "<group>"; };
+		4A6286FB2A17CD1100FA078C /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				4A55404C2A1269D500B79530 /* ArithmeticPuzzleApp.swift */,
 				4A55404E2A1269D500B79530 /* ContentView.swift */,
+				4A6286FB2A17CD1100FA078C /* SoundPlayer.swift */,
 				4A5540632A1375C300B79530 /* QuestionMaker.swift */,
 				4A55405A2A126D6C00B79530 /* GameView.swift */,
 				4A55405E2A1272D600B79530 /* ArithmeticButton.swift */,
@@ -176,6 +179,7 @@
 			files = (
 				4A55405F2A1272D600B79530 /* ArithmeticButton.swift in Sources */,
 				4A5540612A127FA200B79530 /* ArithmeticSymbolSelectButtons.swift in Sources */,
+				4A6286FC2A17CD1100FA078C /* SoundPlayer.swift in Sources */,
 				4A55404F2A1269D500B79530 /* ContentView.swift in Sources */,
 				4A55405D2A12704800B79530 /* ArithmeticSymbols.swift in Sources */,
 				4A5540642A1375C300B79530 /* QuestionMaker.swift in Sources */,

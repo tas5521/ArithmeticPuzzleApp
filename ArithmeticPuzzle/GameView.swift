@@ -22,7 +22,6 @@ struct GameView: View {
     @State var arithmeticSymbol: ArithmeticSymbols?
     // 問題数の変数
     @Binding var numberOfQuestion: Int
-
     // 「back」ボタンを「戻る」に変更するために使用する環境変数
     @Environment(\.dismiss) var dismiss
 

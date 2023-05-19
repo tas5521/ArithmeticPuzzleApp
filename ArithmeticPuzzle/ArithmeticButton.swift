@@ -20,6 +20,10 @@ struct ArithmeticButton: View {
     @Binding var questionNumber: Int
     // シート表示の有無
     @Binding var isShowSheet: Bool
+    // 正解の音のプレイヤーのインスタンスを生成
+    let correctAnswerSoundPlayer: SoundPlayer = SoundPlayer(soundName: "Quiz-Correct_Answer02-1")
+    // 不正解の音のプレイヤーのインスタンスを生成
+    let wrongAnswerSoundPlayer: SoundPlayer = SoundPlayer(soundName: "Quiz-Wrong_Buzzer02-1")
 
     var body: some View {
         Button {
@@ -30,6 +34,7 @@ struct ArithmeticButton: View {
             // 正誤判定
             if checkCorrectOrWrong() {
                 correctOrWrong = true
+                correctAnswerSoundPlayer.soundPlay()
                 // リセットし、次の問題へ
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if questionNumber != (questions.count - 1) {
@@ -42,6 +47,7 @@ struct ArithmeticButton: View {
                 } // DispatchQueueここまで
             } else {
                 correctOrWrong = false
+                wrongAnswerSoundPlayer.soundPlay()
                 // リセット
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     correctOrWrong = nil
@@ -64,7 +70,7 @@ struct ArithmeticButton: View {
     } // bodyここまで
 
     // 正誤を判定するメソッド
-    func checkCorrectOrWrong() -> Bool {
+    private func checkCorrectOrWrong() -> Bool {
         questions[questionNumber].answerSymbol.contains(arithmeticSymbol!)
     } // 正誤を判定するメソッドここまで
 
